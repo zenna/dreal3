@@ -401,6 +401,7 @@ public:
           || (x->getCar( )->getCid( ) == y->getCar( )->getCid( ) && x->getCdr( )->getCid( ) < y->getCdr( )->getCid( ) );
     }
   };
+  double            logprob = 0.0;  // added for sigma
 
 private:
   //

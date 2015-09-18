@@ -81,6 +81,8 @@ void             opensmt_print_interpolant         ( opensmt_context, const char
 void             opensmt_define_ode                ( opensmt_context, const char *, opensmt_expr *, opensmt_expr *, unsigned);
 opensmt_expr     opensmt_mk_integral               ( opensmt_context, opensmt_expr *, opensmt_expr, opensmt_expr, opensmt_expr *, unsigned, const char *);
 
+double           opensmt_get_model_logprob         ( opensmt_context, opensmt_expr );
+
 opensmt_expr     opensmt_mk_true                   ( opensmt_context );
 opensmt_expr     opensmt_mk_false                  ( opensmt_context );
 opensmt_expr     opensmt_mk_bool_var               ( opensmt_context, char const * );

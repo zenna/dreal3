@@ -380,6 +380,7 @@ void box::assign_to_enode() const {
         m_vars[i]->setValueUpperBound(m_values[i].ub());
         m_vars[i]->setBoundLowerBound(m_values[i].lb());
         m_vars[i]->setBoundUpperBound(m_values[i].ub());
+        m_vars[i]->logprob = logprob;
     }
 }
 

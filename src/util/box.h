@@ -50,6 +50,8 @@ private:
     void constructFromVariables(std::vector<Enode *> const & vars);
 
 public:
+    double logprob = 0.0; // added for sigma
+    unsigned int depth = 0;
     explicit box(std::vector<Enode *> const & vars);
     box(box const & b, std::unordered_set<Enode *> const & extra_vars);
     box(std::vector<Enode *> const & vars, ibex::IntervalVector ivec);

@@ -7,7 +7,7 @@ echo OS:  $OS
 ########################################################################
 # Find C++11 Compiler and C Compiler
 ########################################################################
-for CXX in ccache-g++ g++-4.8 g++-4.9 ccache-clang++ clang++-3.5 clang++-3.4 clang++-3.3
+for CXX in ccache-g++ g++-4.9 ccache-clang++ clang++-3.5 clang++-3.4 clang++-3.3
 do
     CXX_PATHNAME=`which $CXX`
     if [ -e "${CXX_PATHNAME}" ]; then
@@ -22,7 +22,7 @@ Please install either g++ 4.8 (or newer) or clang++ 3.3 (or newer).
 EOF
     exit 1
 fi
-for CC in gcc-4.8 gcc-4.9 clang-3.5 clang-3.4 clang-3.3
+for CC in gcc-4.9 clang-3.5 clang-3.4 clang-3.3
 do
     CC_PATHNAME=`which $CC`
     if [ -e "$CC_PATHNAME" ]; then
@@ -38,6 +38,6 @@ if [ ! -d build ]; then
     mkdir build
 fi
 cd build
-cmake -DCMAKE_CXX_COMPILER=$CXX -DCMAKE_C_COMPILER=$CC -DCMAKE_BUILD_TYPE=RELEASE ../src
+cmake -DCMAKE_CXX_COMPILER=$CXX -DCMAKE_C_COMPILER=$CC -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIB=ON ../src
 make -j 2
 cd ../

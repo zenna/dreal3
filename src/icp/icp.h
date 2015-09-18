@@ -32,6 +32,11 @@ public:
     static box solve(box b, contractor const & ctc, SMTConfig & config);
 };
 
+class sample_icp {
+public:
+    static box solve(box b, contractor const & ctc, SMTConfig & config);
+};
+
 class ncbt_icp {
 public:
     static box solve(box b, contractor const & ctc, SMTConfig & config);
@@ -39,9 +44,9 @@ public:
 
 class random_icp {
 private:
-    static bool random_bool();
 
 public:
+    static bool random_bool();
     static box solve(box b, contractor const & ctc, SMTConfig & config);
 };
 

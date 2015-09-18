@@ -1316,4 +1316,16 @@ void opensmt_polarity( opensmt_context, opensmt_expr, int )
   // Enode * atom = static_cast< Enode * >( a );
 }
 
+// return logprobability that the model was samples, v is dummy variable becaue this is a hack
+double opensmt_get_model_logprob( opensmt_context c, opensmt_expr v )
+{
+  assert( c );
+  assert( v );
+  OpenSMTContext * c_ = static_cast< OpenSMTContext * >( c );
+  OpenSMTContext & context = *c_;
+  assert( context.getStatus( ) == l_True );
+  Enode * var = static_cast< Enode * >( v );
+  return var->logprob;
+}
+
 #endif
