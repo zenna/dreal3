@@ -102,23 +102,26 @@ box naive_icp::solve(box b, contractor const & ctc, SMTConfig & config) {
     }
 }
 
-inline float log1pexp(float x)
-{   return x<-88.029691931? 0.: log1p(exp(x));
+
+// log(a + b) (with good precision)
+inline float log1pexp(float x) {
+  return x<-88.029691931? 0.: log1p(exp(x));
 }
-inline float sum_log_prob(float a, float b)
-{   return a>b? a+log1pexp(b-a):  b+log1pexp(a-b);
+
+inline float sum_log_prob(float a, float b) {
+  return a>b? a+log1pexp(b-a):  b+log1pexp(a-b);
 }
-inline double log1pexp(double x)
-{   return x<-709.089565713? 0.: log1p(exp(x));
+inline double log1pexp(double x){
+  return x<-709.089565713? 0.: log1p(exp(x));
 }
-inline double sum_log_prob(double a, double b)
-{   return a>b? a+log1pexp(b-a):  b+log1pexp(a-b);
+inline double sum_log_prob(double a, double b) {
+  return a>b? a+log1pexp(b-a):  b+log1pexp(a-b);
 }
-inline long double log1pexp(long double x)
-{   return x<-11355.8302591? 0.: log1p(exp(x));
+inline long double log1pexp(long double x){
+  return x<-11355.8302591? 0.: log1p(exp(x));
 }
-inline long double sum_log_prob(long double a, long double b)
-{   return a>b? a+log1pexp(b-a):  b+log1pexp(a-b);
+inline long double sum_log_prob(long double a, long double b) {
+  return a>b? a+log1pexp(b-a):  b+log1pexp(a-b);
 }
 
 double logprob_depth(unsigned int depth) {
@@ -165,7 +168,8 @@ box sample_icp::solve(box init_b, contractor const & ctc, SMTConfig & config ) {
     int nconflicts = 0;
 
     // Random Restarts
-    // I need a container for my stack that will allow me to add elements to the end, i.e lower depth means its at the end and pop from either end
+    // I need a container for my stack that will allow me to add elements to the end,
+    // i.e lower depth means its at the end and pop from either end
     // std::set<box, BoxComparator> box_stack;
     do {
         DREAL_LOG_INFO << "icp_loop()"
